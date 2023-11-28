@@ -14,9 +14,14 @@ export class User {
 private generateTweetId(): string {
     return Math.random().toString(36).substring(7);
 }
+get Tweet(): void{
+    return this.Tweet;
+}
 sendTweet(content: string, type: string): void {
     const newTweet = new Tweet(this.generateTweetId(), content, type);
     this.tweets.push(newTweet);
+    console.log("Tweet sent");
+    
 }
           
 follow(){
@@ -26,7 +31,10 @@ showFeed(){
 
 }
 showTweets(){
-
+    this.tweets.forEach((tweet) => {
+      console.log(`@${this.username}: ${tweet.content}`);
+    });
+  
 }
 }
 

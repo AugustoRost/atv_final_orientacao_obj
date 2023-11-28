@@ -1,8 +1,6 @@
 import {Tweet} from './Tweet'
-
-
 export class User {
-    private followers: string[] = [];
+    private followers: User[] = [];
     private tweets: Tweet[] = [];
     constructor(
         private id: string,
@@ -24,17 +22,22 @@ sendTweet(content: string, type: string): void {
     
 }
           
-follow(){
+follow(userToFollow: User): void {
+    userToFollow.addFollower(this);
+    console.log(`${this.username} is now following ${userToFollow.username}`);
+  }
 
-} 
+  private addFollower(user: User): void {
+    this.followers.push(user);
+  } 
 showFeed(){
 
 }
 showTweets(){
     this.tweets.forEach((tweet) => {
-      console.log(`@${this.username}: ${tweet.content}`);
+      console.log(`@${this.username}: ${tweet.content}
+      `);
     });
-  
 }
 }
 

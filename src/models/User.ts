@@ -15,28 +15,34 @@ private generateTweetId(): string {
 get Tweet(): void{
     return this.Tweet;
 }
-sendTweet(content: string, type: string): void {
-    const newTweet = new Tweet(this.generateTweetId(), content, type);
+sendTweet(content: string): void {
+    const newTweet = new Tweet(this.generateTweetId(), content, "normal");
     this.tweets.push(newTweet);
-    console.log("Tweet sent");
+    console.log(`${this.name} Tweet's sent`);
     
 }
           
 follow(userToFollow: User): void {
-    userToFollow.addFollower(this);
-    console.log(`${this.username} is now following ${userToFollow.username}`);
-  }
-
-  private addFollower(user: User): void {
-    this.followers.push(user);
-  } 
-showFeed(){
-
+  userToFollow.addFollower(this);
+  console.log(`${this.username} is now following ${userToFollow.username}`);
 }
-showTweets(){
+
+private addFollower(user: User): void {
+  this.followers.push(user);
+}
+showFeed(): void {
+  console.log(`${this.name} Feed:`);
+  this.showTweets();
+
+  this.followers.forEach((follower) => {
+    follower.showTweets();
+  });
+}
+showTweets(): void{
     this.tweets.forEach((tweet) => {
       console.log(`@${this.username}: ${tweet.content}
       `);
+      
     });
 }
 }

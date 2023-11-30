@@ -3,7 +3,7 @@ export class Tweet {
     private _content: string;
     private _type: string;
   
-    constructor(id: string, content: string, type: string) {
+    constructor(id: string, content: string, type?: string) {
       this._id = id;
       this._content = content;
       this._type = type;

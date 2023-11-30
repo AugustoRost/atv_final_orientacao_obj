@@ -12,8 +12,5 @@ user01.sendTweet("eita");
 //  user00.showTweets();
 //  user01.showTweets();
  user00.follow(user01);
- user01.follow(user00);
-
-//  console.log(user01);
  user00.showFeed();
-// user00.teste()
+ 

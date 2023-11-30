@@ -23,7 +23,7 @@ sendTweet(content: string): void {
 }
           
 follow(userToFollow: User): void {
-  userToFollow.addFollower(this);
+  this.addFollower(userToFollow);
   console.log(`${this.username} is now following ${userToFollow.username}`);
 }
 

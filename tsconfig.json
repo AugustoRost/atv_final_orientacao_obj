@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // versão do javascript que você quer transpilar
-    "rootDir": "./src", // pasta de origem
-    "outDir": "./build", // pasta de destino
-    "moduleResolution": "node"
+    "target": "ES2022",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
   },
-  "include": [
-    "src/**/*.ts" // todos os arquivos dentro da pasta src
-  ],
-  "exclude": [
-    "./node_modules" // exclui a pasta node_modules
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["./node_modules"]
 }

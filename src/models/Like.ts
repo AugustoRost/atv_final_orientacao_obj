@@ -1,4 +1,4 @@
-export class Tweet{
-    constructor(
-        private id: string){}
-}
+//  class Like{
+//     constructor(
+//         private id: string){}
+// }

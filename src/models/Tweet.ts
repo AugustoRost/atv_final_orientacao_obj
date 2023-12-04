@@ -5,7 +5,7 @@ export class Tweet {
   private _type: string;
   private _likes: number = 0;
   private _likedBy: User[] = [];
-  private _replies: Tweet[] = [];
+  private _replies: { user: User, content: string }[] = [];
 
   constructor(id: string, content: string, type?: string) {
       this._id = id;
@@ -25,12 +25,22 @@ export class Tweet {
       return this._type;
   }
 
+  get likes(): number {
+    return this._likes;
+}
+
+get likedBy(): User[] {
+    return this._likedBy;
+}
+get replys(): { user: User, content: string }[] {
+    return this._replies;
+}
+
   reply(user: User, content: string) {
-    const newReply = new Tweet(this.generateTweetId(), content, 'reply');
+    const newReply = { user, content };
     this._replies.push(newReply);
-    user.Tweet.push(newReply);
+    user.Tweet.push(this);
     console.log(`${user.username} reply`);
-    
 }
 
 private generateTweetId(): string {
@@ -50,7 +60,9 @@ show(){
 console.log(`${this.content}`);
 
 }
-showReplies():void {
-
-}
+showReplies(): void {
+    this._replies.forEach((reply) => {
+        console.log(`Reply by @${reply.user.username}: ${reply.content}`);
+    });
+  }
 }

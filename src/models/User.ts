@@ -79,8 +79,21 @@ showTweets(): void{
     this.tweets.forEach((tweet) => {
       console.log(`@${this._username}: ${tweet.content}
       `);
-      
-    });
+      if (tweet.likes >= 2) {
+				console.log(
+					`[${tweet.likedBy[0].username} and other ${
+						tweet.likedBy.length - 1
+					} user liked this]`
+				);
+			} else if (tweet.likes === 1) {
+				console.log(`[${tweet.likedBy[0].username} liked this]`);
+			}
+			if (tweet.replys.length !== 0) {
+				tweet.showReplies();
+			}
+			console.log('---------------------');
+		});
+  
 }
 addLikedTweet(tweet: Tweet): void {
   this._likedTweets.push(tweet);
